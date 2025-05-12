@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "178788819610",
+    "project_id": "manyumba-86353",
+    "storage_bucket": "manyumba-86353.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:178788819610:android:5a53b39702d3e668b1b523",
+        "android_client_info": {
+          "package_name": "com.kingsler.manyumba"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2QVUMdT0sE7fZAddUH18rK2WmplrQWoY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
