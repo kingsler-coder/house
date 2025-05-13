@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.kingsler.manyumba.R
+import com.kingsler.manyumba.ui.theme.ManyumbaTheme
 
 
 @Composable
@@ -97,6 +98,8 @@ fun PropertyCard(property: Property, onClick: () -> Unit) {
 
 @Preview
 @Composable
-private fun home_pre() {
-    HomeScreen(navController = rememberNavController())
+private fun HomeScreenPreview() {
+    ManyumbaTheme {
+        HomeScreen(navController = rememberNavController())
+    }
 }

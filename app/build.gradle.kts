@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose.jvmstubs)
     implementation(libs.androidx.animation.core.lint)
     implementation(libs.firebase.auth)
+
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)

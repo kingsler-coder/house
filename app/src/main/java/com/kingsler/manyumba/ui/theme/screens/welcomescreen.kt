@@ -22,8 +22,10 @@ import androidx.compose.foundation.layout.padding // Ensure padding is imported
 import androidx.compose.ui.res.painterResource // Import for painterResource
 import androidx.compose.ui.tooling.preview.Preview // Import for Preview
 import androidx.navigation.compose.rememberNavController
-import com.kingsler.manyumba.navigation.Routes
+
 import com.kingsler.manyumba.R // Import for resources - adjust package name if needed
+import com.kingsler.manyumba.navigation.LOGIN
+import com.kingsler.manyumba.navigation.SIGNUP
 
 @Composable
 fun WelcomeScreen(navController: NavHostController) {
@@ -58,14 +60,14 @@ fun WelcomeScreen(navController: NavHostController) {
             modifier = Modifier.padding(bottom = 32.dp)
         )
         Button(
-            onClick = { navController.navigate(Routes.SIGNUP) }, // Navigate to SignUp
+            onClick = { navController.navigate(SIGNUP) }, // Navigate to SignUp
             modifier = Modifier.fillMaxWidth(0.8f)
         ) {
             Text(text = "Sign Up")
         }
         Spacer(modifier = Modifier.height(8.dp))
         Button(
-            onClick = { navController.navigate(Routes.LOGIN) }, // Navigate to Login
+            onClick = { navController.navigate(LOGIN) }, // Navigate to Login
             modifier = Modifier.fillMaxWidth(0.8f)
         ) {
             Text(text = "Login")
@@ -77,7 +79,7 @@ fun WelcomeScreen(navController: NavHostController) {
 @Preview(showBackground = true)
 @Composable
 fun WelcomeScreenPreview() {
-    // You need to provide a NavHostController for the preview, but it doesn't do anything.
-    val navController = rememberNavController()  //Removed rememberNavController
-    WelcomeScreen(navController = navController)
+//    // You need to provide a NavHostController for the preview, but it doesn't do anything.
+//    val navController = rememberNavController()  //Removed rememberNavController
+    WelcomeScreen(navController = rememberNavController())
 }

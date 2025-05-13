@@ -13,9 +13,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navcontroller : NavHostController) {
     var fullName by rememberSaveable { mutableStateOf("") }
     var phoneNumber by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") } // Added email state
@@ -91,10 +93,8 @@ fun ProfileScreen() {
     }
 }
 
-@Preview(showBackground = true)
+@Preview
 @Composable
-fun ProfileScreenPreview() {
-    ManyumbaTheme {
-        ProfileScreen()
-    }
+fun ProfileScreenPreview(){
+    ProfileScreen(rememberNavController())
 }

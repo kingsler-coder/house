@@ -130,8 +130,7 @@ fun rememberAsyncImagePainter(model: String): Painter {
 @Preview(showBackground = true)
 @Composable
 fun PropertyListingsScreenPreview() {
-    val navController = rememberNavController()
-    ManyumbaTheme {
-        PropertyListingsScreen(navController = navController)
-    }
+//    val navController = rememberNavController()
+        PropertyListingsScreen(navController = rememberNavController())
+
 }

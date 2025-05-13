@@ -6,49 +6,48 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
-import androidx.navigation.NavType
+import com.google.android.gms.common.Scopes.PROFILE
 import com.kingsler.manyumba.ui.theme.screens.HomeScreen
 import com.kingsler.manyumba.ui.theme.screens.LoginScreen
+import com.kingsler.manyumba.ui.theme.screens.ProfileScreen
 import com.kingsler.manyumba.ui.theme.screens.PropertyDetailsScreen
 import com.kingsler.manyumba.ui.theme.screens.PropertyListingsScreen
 import com.kingsler.manyumba.ui.theme.screens.RegistrationScreen
 import com.kingsler.manyumba.ui.theme.screens.SplashScreen
+import com.kingsler.manyumba.ui.theme.screens.WelcomeScreen
 
+//interface AInterface {
+//    @Composable
+//    fun Show(modifier: Modifier)
+//}
 @Composable
-fun AppNavHost(
-    modifier: Modifier = Modifier,
-    startDestination: String = "home" // Default start destination
-) {
-    // Initialize navController here using rememberNavController()
-    val navController: NavHostController = rememberNavController()
+fun AppNavHost(modifier: Modifier=Modifier, navController:NavHostController= rememberNavController(), startDestination:String= LOGIN) {
 
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable("home") {
+        composable(HOME) {
             HomeScreen(navController = navController)
         }
-        composable("splash") {
+        composable(SPLASH) {
             SplashScreen(navController = navController)
         }
-        composable("login") {
+        composable(LOGIN) {
             LoginScreen(navController = navController)
         }
-        composable("register") {
+        composable(SIGNUP) {
             RegistrationScreen(navController = navController)
         }
-        composable("propertyListings") {
-            PropertyListingsScreen(navController = navController)
+        composable(WELCOME) {
+            WelcomeScreen(navController = navController)
         }
-        composable(
-            "propertyDetails/{propertyId}",
-            arguments = listOf(navArgument("propertyId") { type = NavType.IntType }) // Corrected type
-        ) { backStackEntry ->
-            val propertyId = backStackEntry.arguments?.getInt("propertyId") ?: -1
-            PropertyDetailsScreen(navController = navController, propertyId = propertyId.toString()) // Pass as Int
+        composable(PROFILE) {
+            ProfileScreen(navController)
+        }
+        composable(PROPERTY_LISTING) {
+            PropertyListingsScreen(navController = navController)
         }
     }
 }
