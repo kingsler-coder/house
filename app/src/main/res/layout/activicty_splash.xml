@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:text="Welcome to Africaspace!"
+        android:text="Welcome to RealEstates !"
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_width="wrap_content"

@@ -21,7 +21,9 @@ import com.kingsler.manyumba.ui.theme.screens.WelcomeScreen
 //    fun Show(modifier: Modifier)
 //}
 @Composable
-fun AppNavHost(modifier: Modifier=Modifier, navController:NavHostController= rememberNavController(), startDestination:String= LOGIN) {
+fun AppNavHost(modifier: Modifier=Modifier,
+               navController:NavHostController= rememberNavController(),
+               startDestination:String= SPLASH) {
 
     NavHost(
         navController = navController,
