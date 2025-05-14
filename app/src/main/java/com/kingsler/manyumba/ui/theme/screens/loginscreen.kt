@@ -1,6 +1,7 @@
 package com.kingsler.manyumba.ui.theme.screens
 
-
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
@@ -12,76 +13,101 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 
 
 @Composable
 fun LoginScreen(navController: NavHostController) {
-    // Use rememberSaveable to survive configuration changes.
-    var email by rememberSaveable { mutableStateOf("") }
-    var password by rememberSaveable { mutableStateOf("") }
-    var passwordVisible by rememberSaveable { mutableStateOf(false) } // Removed - Not used
+    var email by remember { mutableStateOf(TextFieldValue("")) }
+    var password by remember { mutableStateOf(TextFieldValue("")) }
 
     Column(
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
-            .padding(24.dp),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .background(Color(0xFFECEFF1))
     ) {
-        Text("Welcome Back!", style = MaterialTheme.typography.headlineMedium)
-
-        Spacer(modifier = Modifier.height(24.dp))
-
+        Text(
+            "Login Screen",
+            color = Color.Black,
+            fontSize = 35.sp,
+            fontFamily = FontFamily.Monospace
+        )
+        Spacer(modifier = Modifier.height(50.dp))
         OutlinedTextField(
             value = email,
             onValueChange = { email = it },
-            label = { Text("Email") },
-            singleLine = true,
-            modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next)
+            label = {
+                Text(
+                    "Enter email ",
+                    color = Color.Black,
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily.Monospace,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp),
+
+                    )
+            }
         )
-
-        Spacer(modifier = Modifier.height(16.dp))
-
+        Spacer(modifier = Modifier.height(50.dp))
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
-            label = { Text("Password") },
-            singleLine = true,
-            visualTransformation = PasswordVisualTransformation(), // Changed here
-            modifier = Modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Done)
-        )
+            label = {
+                Text(
+                    "Enter Password ",
+                    color = Color.Black,
+                    fontSize = 18.sp,
+                    fontFamily = FontFamily.Monospace,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(4.dp),
 
-        Spacer(modifier = Modifier.height(24.dp))
+                    )
+            }
+        )
+        Spacer(modifier = Modifier.height(50.dp))
 
         Button(
             onClick = {
-                // Handle Login Logic Here
-                println("Login with Email: $email, Password: $password")
+                //  ADD THE NAV CONTROLLER HERE
+                navController.navigate("home")
             },
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(50.dp)
+            colors = ButtonDefaults.buttonColors(Color.LightGray),
+            modifier = Modifier.fillMaxWidth()
         ) {
-            Text("Login")
+            Text(
+                "Click to log in",
+                color = Color.Black,
+                fontSize = 30.sp,
+                fontFamily = FontFamily.Serif
+            )
         }
+        Spacer(modifier = Modifier.height(20.dp))
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Text(
+            "Dont have an account? Click Register",
+            fontSize = 20.sp,
+            modifier = Modifier
+                .clickable { navController.navigate("signup") }
+        )
 
-        TextButton(onClick = {
-            // Handle Navigation to Registration
-            println("Navigate to Registration")
-        }) {
-            Text("Don't have an account? Register")
-        }
+
     }
+
+
 }
 
 @Preview(showBackground = true)
 @Composable
 fun LoginScreenPreview() {
-    LoginScreen(navController = NavHostController(context = LocalContext.current))
+    LoginScreen(navController = rememberNavController())
 }

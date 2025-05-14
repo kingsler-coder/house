@@ -41,7 +41,8 @@ fun ProfileScreen(navcontroller : NavHostController) {
                 onValueChange = { fullName = it },
                 label = { Text("Full Name") },
                 singleLine = true,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier
+                    .fillMaxWidth(),
                 keyboardOptions = KeyboardOptions.Default.copy(imeAction = ImeAction.Next)
             )
 
@@ -81,9 +82,9 @@ fun ProfileScreen(navcontroller : NavHostController) {
         } else {
             // Display fields
             Text(text = "Full Name: $fullName", style = MaterialTheme.typography.bodyLarge)
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(25.dp))
             Text(text = "Phone Number: $phoneNumber", style = MaterialTheme.typography.bodyLarge)
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(25.dp))
             Text(text = "Email: $email", style = MaterialTheme.typography.bodyLarge) //show email
             Spacer(modifier = Modifier.height(24.dp))
             Button(onClick = { isEditing = true }) {
@@ -93,7 +94,7 @@ fun ProfileScreen(navcontroller : NavHostController) {
     }
 }
 
-@Preview
+@Preview(showBackground = true)
 @Composable
 fun ProfileScreenPreview(){
     ProfileScreen(rememberNavController())

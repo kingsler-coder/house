@@ -26,6 +26,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.rememberNavController
 import com.kingsler.manyumba.model.Property
 import com.kingsler.manyumba.R
+import coil.compose.rememberAsyncImagePainter // Import Coil's painter
 
 
 @Composable
@@ -34,7 +35,7 @@ fun PropertyListingsScreen(navController: NavController) {
     val property = remember {
         Property(
             id = 1,
-            title = "Luxury Villa in Nairobi",
+            title = "Luxury Villa in Mombasa",
             location = "Nairobi",
             price = 500000.0,
             imageUrl = "https://source.unsplash.com/featured/?house,luxury",
@@ -77,8 +78,11 @@ fun PropertyCard(property: Property, navController: NavController) {
         Column(
             modifier = Modifier.padding(16.dp),
         ) {
-            // Use a placeholder until the image loads.
-            val imagePainter: Painter = rememberAsyncImagePainter(property.imageUrl)
+            val imagePainter: Painter = rememberAsyncImagePainter(
+                model = property.imageUrl,
+                placeholder = painterResource(R.drawable.mavela),
+                error = painterResource(R.drawable.mavela)
+            )
             Image(
                 painter = imagePainter,
                 contentDescription = property.title,
@@ -113,24 +117,11 @@ fun PropertyCard(property: Property, navController: NavController) {
     }
 }
 
-@Composable
-fun rememberAsyncImagePainter(model: String): Painter {
-    return remember(model) {
-        // Return a placeholder.  In a real app, use a library like Coil or Glide.
-        object : Painter() {
-            override val intrinsicSize = androidx.compose.ui.geometry.Size.Unspecified
-
-            override fun DrawScope.onDraw() {
-                drawRect(Color.LightGray, size = size) // Draw a gray rectangle as a placeholder
-            }
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
 fun PropertyListingsScreenPreview() {
-//    val navController = rememberNavController()
-        PropertyListingsScreen(navController = rememberNavController())
+    //    val navController = rememberNavController()
+    PropertyListingsScreen(navController = rememberNavController())
 
 }

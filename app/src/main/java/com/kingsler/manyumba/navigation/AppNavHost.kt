@@ -6,24 +6,21 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.google.android.gms.common.Scopes.PROFILE
 import com.kingsler.manyumba.ui.theme.screens.HomeScreen
 import com.kingsler.manyumba.ui.theme.screens.LoginScreen
 import com.kingsler.manyumba.ui.theme.screens.ProfileScreen
-import com.kingsler.manyumba.ui.theme.screens.PropertyDetailsScreen
 import com.kingsler.manyumba.ui.theme.screens.PropertyListingsScreen
 import com.kingsler.manyumba.ui.theme.screens.RegistrationScreen
 import com.kingsler.manyumba.ui.theme.screens.SplashScreen
 import com.kingsler.manyumba.ui.theme.screens.WelcomeScreen
+import com.kingsler.manyumba.ui.theme.screens.PropertyDetailsScreen
 
-//interface AInterface {
-//    @Composable
-//    fun Show(modifier: Modifier)
-//}
 @Composable
-fun AppNavHost(modifier: Modifier=Modifier,
-               navController:NavHostController= rememberNavController(),
-               startDestination:String= SPLASH) {
+fun AppNavHost(
+    modifier: Modifier = Modifier,
+    navController: NavHostController = rememberNavController(),
+    startDestination: String = SPLASH
+) {
 
     NavHost(
         navController = navController,
@@ -36,11 +33,11 @@ fun AppNavHost(modifier: Modifier=Modifier,
         composable(SPLASH) {
             SplashScreen(navController = navController)
         }
-        composable(LOGIN) {
-            LoginScreen(navController = navController)
-        }
         composable(SIGNUP) {
             RegistrationScreen(navController = navController)
+        }
+        composable(LOGIN) {
+            LoginScreen(navController = navController)
         }
         composable(WELCOME) {
             WelcomeScreen(navController = navController)
@@ -50,6 +47,13 @@ fun AppNavHost(modifier: Modifier=Modifier,
         }
         composable(PROPERTY_LISTING) {
             PropertyListingsScreen(navController = navController)
+        }
+        composable(PROPERTY_DETAILS) { backStackEntry ->
+            val propertyId = backStackEntry.arguments?.getString("propertyId") // Changed to propertyId
+            PropertyDetailsScreen(
+                navController = navController,
+                propertyId = propertyId
+            )
         }
     }
 }

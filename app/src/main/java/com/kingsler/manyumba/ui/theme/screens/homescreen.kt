@@ -42,8 +42,8 @@ fun HomeScreen(navController: NavController) {
     ) {
         items(properties) { property ->
             PropertyCard(property = property, onClick = {
-                // Navigate to the property detail screen
-                navController.navigate("property_detail_screen") // Update the route as needed
+                // Navigate to the property detail screen.  Use a route that includes the property ID.
+                navController.navigate("propertyDetails/${property.title}") //  Use property.id if you have it
             })
         }
     }

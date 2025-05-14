@@ -14,8 +14,8 @@ import com.kingsler.manyumba.ui.theme.ManyumbaTheme
 sealed class Screen(val route: String) {
     object Splash : Screen("splash")
     object Welcome : Screen("welcome")
-    object Login : Screen("login")
-    object Registration : Screen("registration")
+    object Login : Screen("registration")
+    object Registration : Screen("login")
     object Home : Screen("home")
     object Profile : Screen("profile")
     object PropertyListings : Screen("property_listings")
@@ -37,11 +37,11 @@ fun ManyumbaApp(navController: NavHostController = rememberNavController()) {
             composable(Screen.Welcome.route) {
                 WelcomeScreen(navController = navController)
             }
-            composable(Screen.Login.route) {
-                LoginScreen(navController = navController)
-            }
             composable(Screen.Registration.route) {
                 RegistrationScreen(navController = navController)
+            }
+            composable(Screen.Login.route) {
+                LoginScreen(navController = navController)
             }
             composable(Screen.Home.route) {
                 HomeScreen(navController = navController)

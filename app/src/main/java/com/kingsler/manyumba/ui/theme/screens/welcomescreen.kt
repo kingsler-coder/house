@@ -38,7 +38,7 @@ fun WelcomeScreen(navController: NavHostController) {
     ) {
         // Image for the welcome screen
         Image(
-            painter = painterResource(id = R.drawable.music_icon1), // Use your image resource here
+            painter = painterResource(id = R.drawable.appicon), // Use your image resource here
             contentDescription = "Welcome Image", // Provide a description for accessibility
             modifier = Modifier.size(200.dp) // Adjust size as needed
         )
@@ -46,7 +46,7 @@ fun WelcomeScreen(navController: NavHostController) {
         Spacer(modifier = Modifier.height(32.dp))
 
         Text(
-            text = "Welcome to Manyumba!",
+            text = "Welcome to Manyumba App!",
             style = TextStyle(
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
@@ -55,8 +55,8 @@ fun WelcomeScreen(navController: NavHostController) {
             modifier = Modifier.padding(bottom = 16.dp)
         )
         Text(
-            text = "Explore a world of music.",
-            style = TextStyle(fontSize = 18.sp),
+            text = "Explore your dream house",
+            style = TextStyle(fontSize = 20.sp),
             modifier = Modifier.padding(bottom = 32.dp)
         )
         Button(

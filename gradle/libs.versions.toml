@@ -1,5 +1,6 @@
 [versions]
 agp = "8.9.1"
+coilComposeVersion = "2.5.0"
 kotlin = "2.0.21"
 coreKtx = "1.16.0"
 junit = "4.13.2"
@@ -27,6 +28,7 @@ volley = "1.2.1"
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-navigation-compose-android = { module = "androidx.navigation:navigation-compose-android", version.ref = "navigationComposeAndroid" }
+coil-kt-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilComposeVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
